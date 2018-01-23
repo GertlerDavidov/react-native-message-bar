@@ -3,7 +3,7 @@
  * Description: A Message Bar Component displayed at the top of screen
  * https://github.com/KBLNY/react-native-message-bar
  */
-'use strict';
+
 
 import React, {Component} from 'react'
 import {
@@ -18,7 +18,7 @@ import {
   Platform,
 } from 'react-native';
 
-var Icon = require('react-native-vector-icons/MaterialIcons');
+import Icon  from 'react-native-vector-icons/MaterialIcons';
 
 let windowWidth = Dimensions.get('window').width
 let windowHeight = Dimensions.get('window').height
@@ -74,6 +74,7 @@ class MessageBar extends Component {
       title: props.title,
       message: props.message,
       imgMessage: props.imgMessage,
+      messageType: props.messageType,
       avatar: props.avatar,
       alertType: props.alertType || 'info',
       duration: props.duration || 3000,
@@ -436,26 +437,32 @@ class MessageBar extends Component {
   }
 
   renderMessage() {
-    if ( this.state.message != null && this.state.imgMessage != null )
-      return (
-        <View style={{flexDirection:'row', alignItems:'center'}}>
-          <Icon allowFontScaling={false} name="mic" size={15} color='#000' style={{}} />
-          <Text numberOfLines={this.state.messageNumberOfLines} style={this.state.messageStyle}>
-            { this.state.message }
-          </Text>
-        </View>
-      );
-    if (this.state.message != null) {
+    switch (this.state.messageType) {
+      case 'MESSAGE':
       return (
         <Text numberOfLines={this.state.messageNumberOfLines} style={this.state.messageStyle}>
           { this.state.message }
         </Text>
       );
-    }
-    if (this.state.imgMessage != null) {
-     return (
-          <Image style={this.state.messageStyle}  source={this.state.imgMessage} />
+        break;
+
+      case 'WINK':
+        return (
+           <Image style={this.state.messageStyle}  source={this.state.imgMessage} />
         );
+        break;
+      case 'VOICE':
+        return (
+          <View style={{flexDirection:'row', alignItems:'center'}}>
+
+            <Text numberOfLines={this.state.messageNumberOfLines} style={this.state.messageStyle}>
+              { this.state.message }
+            </Text>
+          </View>
+        );
+        break;
+      default:
+
     }
   }
 
