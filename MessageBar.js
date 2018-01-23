@@ -391,21 +391,33 @@ class MessageBar extends Component {
     this._apllyAnimationTypeTransformation();
 
       return (
-        <Animated.View style={{ transform: this.animationTypeTransform, backgroundColor: this.state.backgroundColor, borderColor: this.state.strokeColor, borderBottomWidth: 1, position: 'absolute', top: this.state.viewTopOffset, bottom: this.state.viewBottomOffset, left: this.state.viewLeftOffset, paddingTop: this.state.viewTopInset, paddingBottom: this.state.viewBottomInset, paddingLeft: this.state.viewLeftInset, paddingRight: this.state.viewRightInset }}>
-          <TouchableOpacity onPress={()=>{this._alertTapped()}} style={{ width: windowWidth }}>
-            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end', margin: this.state.bodyMargin, }} >
+        <Animated.View style={{ transform: this.animationTypeTransform,
+                                backgroundColor: this.state.backgroundColor,
+                                borderColor: this.state.strokeColor,
+                                borderBottomWidth: 1,
+                                height: 70,
+                                padding: 10,
+                                width: '100%',
+                                position: 'absolute'}}>
+          <TouchableOpacity onPress={()=>{this._alertTapped()}}
+                            style={{ width: '100%',
+                                     height:'100%',}}>
+            <View style={{ flexDirection: 'row-reverse',
+                           alignItems: 'flex-end',
+                           height:'100%', }} >
               { this.renderImage() }
-              <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'stretch', justifyContent: 'center', marginLeft: 10, marginRight: 10 }} >
+              <View style={{ flexDirection: 'column',
+                             alignSelf: 'flex-start',
+                             marginRight: 10 }} >
                 { this.renderTitle() }
                 { this.renderMessage() }
               </View>
             </View>
           </TouchableOpacity>
-          <View style={{ position: 'absolute', top: 0, right: 0, alignSelf: 'flex-start' }}>
-                { this.renderCloseButton() }
-          </View>
+          {this.renderCloseButton()}
         </Animated.View>
       );
+
   }
 
   renderImage() {
@@ -448,7 +460,10 @@ class MessageBar extends Component {
 
       case 'WINK':
         return (
+          <View style={{width:'100%',
+                       flexDirection:'row-reverse',}}>
            <Image style={this.state.messageStyle}  source={this.state.imgMessage} />
+          </View>
         );
         break;
       case 'VOICE':
@@ -469,10 +484,15 @@ class MessageBar extends Component {
   renderCloseButton() {
     if (this.state.showCloseButton != null && this.state.showCloseButton) {
       return (
-        <TouchableOpacity onPress={()=>{this._alertCloseTapped()}}>
-          <View style={{marginTop: this.state.closeButtonMarginTop, marginBottom: this.state.closeButtonMarginBottom, marginRight: this.state.closeButtonMarginRight, marginLeft: this.state.closeButtonMarginLeft, alignSelf: 'stretch'}}>
-            <Icon allowFontScaling={false} name="clear" size={this.state.closeButtonIconSize} color={this.state.closeButtonColor} />
-          </View>
+        <TouchableOpacity onPress={()=>{this._alertCloseTapped()}}
+                          style={{position:'absolute',
+                                  height: 70, width: 70,
+                                  left: 0,
+                                  alignItems: 'center', justifyContent:'center' }}>
+            <Icon allowFontScaling={false}
+                  name="clear"
+                  size={this.state.closeButtonIconSize}
+                  color={this.state.closeButtonColor} />
         </TouchableOpacity>
       );
     }
