@@ -454,7 +454,7 @@ class MessageBar extends Component {
       case 'VOICE':
         return (
           <View style={{flexDirection:'row', alignItems:'center'}}>
-
+            <Icon allowFontScaling={false} name="mic" size={15} color='#000' style={{}} />
             <Text numberOfLines={this.state.messageNumberOfLines} style={this.state.messageStyle}>
               { this.state.message }
             </Text>
