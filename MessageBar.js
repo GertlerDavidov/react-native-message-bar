@@ -400,7 +400,7 @@ class MessageBar extends Component {
                                 width: '100%',
                                 position: 'absolute'}}>
           <TouchableOpacity onPress={()=>{this._alertTapped()}}
-                            style={{ width: '100%',
+                            style={{ width: Dimensions.get('window').width - 80,
                                      height:'100%',}}>
             <View style={{ flexDirection: 'row-reverse',
                            alignItems: 'flex-end',
@@ -408,7 +408,6 @@ class MessageBar extends Component {
               { this.renderImage() }
               <View style={{ flexDirection: 'column',
                              alignSelf: 'flex-start',
-                             paddingLeft: 70,
                              marginRight: 10 }} >
                 { this.renderTitle() }
                 { this.renderMessage() }
