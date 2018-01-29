@@ -443,7 +443,6 @@ class MessageBar extends Component {
     if (this.state.title != null) {
       return (
         <Text allowFontScaling={false} 
-              numberOfLines=1
               style={this.state.titleStyle}>
           { this.state.title }
         </Text>
