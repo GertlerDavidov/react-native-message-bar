@@ -466,15 +466,19 @@ class MessageBar extends Component {
         return (
           <View style={{width:'100%',
                        flexDirection:'row-reverse',}}>
-           <Image style={this.state.messageStyle}  source={this.state.imgMessage} />
+           <Image style={this.state.messageStyle}
+                  source={this.state.imgMessage} />
           </View>
         );
         break;
       case 'VOICE':
         return (
-          <View style={{flexDirection:'row', alignItems:'center'}}>
-            <Icon allowFontScaling={false} name="mic" size={15} color='#000' style={{}} />
-            <Text numberOfLines={this.state.messageNumberOfLines} style={this.state.messageStyle}>
+          <View style={{width:'100%',
+                       flexDirection:'row-reverse',
+                       marginTop:5,}}>
+            <Icon allowFontScaling={false} name="mic" size={15} color='#000'/>
+            <Text numberOfLines={1}
+                  style={this.state.messageStyle}>
               { this.state.message }
             </Text>
           </View>
