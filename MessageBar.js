@@ -408,6 +408,7 @@ class MessageBar extends Component {
               { this.renderImage() }
               <View style={{ flexDirection: 'column',
                              alignSelf: 'flex-start',
+                             paddingLeft: 70,
                              marginRight: 10 }} >
                 { this.renderTitle() }
                 { this.renderMessage() }
@@ -441,7 +442,9 @@ class MessageBar extends Component {
   renderTitle() {
     if (this.state.title != null) {
       return (
-        <Text numberOfLines={this.state.titleNumberOfLines} style={this.state.titleStyle}>
+        <Text allowFontScaling={false} 
+              numberOfLines=1
+              style={this.state.titleStyle}>
           { this.state.title }
         </Text>
       );
@@ -452,7 +455,10 @@ class MessageBar extends Component {
     switch (this.state.messageType) {
       case 'MESSAGE':
       return (
-        <Text numberOfLines={this.state.messageNumberOfLines} style={this.state.messageStyle}>
+        <Text numberOfLines={this.state.messageNumberOfLines} 
+              ellipsizeMode='tail'
+              allowFontScaling={false}
+              style={this.state.messageStyle}>
           { this.state.message }
         </Text>
       );
