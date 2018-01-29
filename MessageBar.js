@@ -401,13 +401,13 @@ class MessageBar extends Component {
                                 position: 'absolute'}}>
           <TouchableOpacity onPress={()=>{this._alertTapped()}}
                             style={{ width: Dimensions.get('window').width - 80,
-                                     height:'100%',}}>
+                                     alignSelf:'flex-end'}}>
             <View style={{ flexDirection: 'row-reverse',
-                           alignItems: 'flex-start',
-                           height:'100%', }} >
+                           height:50,
+                           width: '100%'}} >
               { this.renderImage() }
               <View style={{ flexDirection: 'column',
-                             alignSelf: 'flex-start',
+                             width: '100%',
                              marginRight: 10 }} >
                 { this.renderTitle() }
                 { this.renderMessage() }
@@ -441,8 +441,9 @@ class MessageBar extends Component {
   renderTitle() {
     if (this.state.title != null) {
       return (
-        <Text allowFontScaling={false} 
-              style={this.state.titleStyle}>
+        <Text allowFontScaling={false}
+              numberOfLines={1}
+              style={[this.state.titleStyle]}>
           { this.state.title }
         </Text>
       );
@@ -453,15 +454,14 @@ class MessageBar extends Component {
     switch (this.state.messageType) {
       case 'MESSAGE':
       return (
-        <Text numberOfLines={this.state.messageNumberOfLines} 
+        <Text numberOfLines={2}
               ellipsizeMode='tail'
               allowFontScaling={false}
-              style={this.state.messageStyle}>
+              style={[this.state.messageStyle]}>
           { this.state.message }
         </Text>
       );
         break;
-
       case 'WINK':
         return (
           <View style={{width:'100%',
