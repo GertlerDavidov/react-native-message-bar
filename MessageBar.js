@@ -403,7 +403,7 @@ class MessageBar extends Component {
                             style={{ width: Dimensions.get('window').width - 80,
                                      height:'100%',}}>
             <View style={{ flexDirection: 'row-reverse',
-                           alignItems: 'flex-end',
+                           alignItems: 'flex-start',
                            height:'100%', }} >
               { this.renderImage() }
               <View style={{ flexDirection: 'column',
