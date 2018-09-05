@@ -484,6 +484,19 @@ class MessageBar extends Component {
           </View>
         );
         break;
+       case 'IMAGE':
+          return (
+            <View style={{width:'100%',
+                         flexDirection:'row-reverse',
+                         marginTop:5,}}>
+              <Icon allowFontScaling={false} name="camera-alt" size={15} color='#000'/>
+              <Text numberOfLines={1}
+                    style={this.state.messageStyle}>
+                { this.state.message }
+              </Text>
+            </View>
+          );
+          break;
       default:
 
     }
