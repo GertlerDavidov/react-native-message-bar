@@ -398,6 +398,7 @@ class MessageBar extends Component {
                                 height: 70,
                                 padding: 10,
                                 width: '100%',
+                                marginTop: ( Platform.OS == 'ios' ) ? 20 : 0,
                                 position: 'absolute'}}>
           <TouchableOpacity onPress={()=>{this._alertTapped()}}
                             style={{ width: Dimensions.get('window').width - 80,
