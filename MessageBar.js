@@ -395,10 +395,9 @@ class MessageBar extends Component {
                                 backgroundColor: this.state.backgroundColor,
                                 borderColor: this.state.strokeColor,
                                 borderBottomWidth: 1,
-                                height: 70,
                                 padding: 10,
+                                paddingTop: 40,
                                 width: '100%',
-                                marginTop: ( Platform.OS == 'ios' ) ? 20 : 0,
                                 position: 'absolute'}}>
           <TouchableOpacity onPress={()=>{this._alertTapped()}}
                             style={{ width: Dimensions.get('window').width - 80,
@@ -477,7 +476,7 @@ class MessageBar extends Component {
           <View style={{width:'100%',
                        flexDirection:'row-reverse',
                        marginTop:5,}}>
-            <Icon allowFontScaling={false} name="mic" size={15} color='#000'/>
+            <Icon allowFontScaling={false} name="mic" size={15} color='#fff'/>
             <Text numberOfLines={1}
                   style={this.state.messageStyle}>
               { this.state.message }
@@ -490,7 +489,7 @@ class MessageBar extends Component {
             <View style={{width:'100%',
                          flexDirection:'row-reverse',
                          marginTop:5,}}>
-              <Icon allowFontScaling={false} name="camera-alt" size={15} color='#000'/>
+              <Icon allowFontScaling={false} name="camera-alt" size={15} color='#fff'/>
               <Text numberOfLines={1}
                     style={this.state.messageStyle}>
                 { this.state.message }
@@ -510,6 +509,7 @@ class MessageBar extends Component {
                           style={{position:'absolute',
                                   height: 70, width: 70,
                                   left: 0,
+                                  top: 30,
                                   alignItems: 'center', justifyContent:'center' }}>
             <Icon allowFontScaling={false}
                   name="clear"
